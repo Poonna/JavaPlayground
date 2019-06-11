@@ -4,14 +4,16 @@ import java.awt.CardLayout;
 
 public class BasicApp extends JFrame {
     private CardLayout layout;
+    private PageA pageA;
+    private PageB pageB;
 
     public BasicApp() {
         super("Basic GUI Demo");
 
         layout = new CardLayout();
         setLayout(layout);
-        PageA pageA = new PageA(this);
-        PageB pageB = new PageB(this);
+        pageA = new PageA(this);
+        pageB = new PageB(this);
         add(pageA, "PageA");
         add(pageB, "PageB");
 
@@ -24,7 +26,8 @@ public class BasicApp extends JFrame {
         layout.show(this.getContentPane(), "PageA");
     }
 
-    public void switchToPageB() {
+    public void switchToPageB(String text) {
+        pageB.setData(text);
         layout.show(this.getContentPane(), "PageB");
     }
 

@@ -26,7 +26,7 @@ class PageA extends JPanel {
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PageA.this.app.switchToPageB();
+                PageA.this.app.switchToPageB(textField.getText());
             }
         });
     }

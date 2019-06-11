@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 class PageB extends JPanel {
     private BasicApp app;
+    private String text;
 
     public PageB(BasicApp app) {
         this.app = app;
@@ -27,8 +28,12 @@ class PageB extends JPanel {
 
         showButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Hello!");
+                JOptionPane.showMessageDialog(null, text);
             }
         });
+    }
+
+    void setData(String text) {
+        this.text = text;
     }
 }
