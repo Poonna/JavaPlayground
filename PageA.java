@@ -3,11 +3,15 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class PageA extends JPanel {
-    public PageA() {
+    private BasicApp app;
+
+    public PageA(BasicApp app) {
+        this.app = app;
+
         JLabel label = new JLabel("Click here:");
         JButton button = new JButton("Click!");
         JTextField textField = new JTextField("Nothing here.", 20);
@@ -16,15 +20,14 @@ class PageA extends JPanel {
         topPanel.add(label);
         topPanel.add(button);
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textField.setText("Button clicked!");
-            }
-        });
-
         setLayout(new BorderLayout());
         add(topPanel, BorderLayout.NORTH);
         add(textField, BorderLayout.CENTER);
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PageA.this.app.switchToPageB();
+            }
+        });
     }
 }

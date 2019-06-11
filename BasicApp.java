@@ -1,15 +1,31 @@
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 
 public class BasicApp extends JFrame {
+    private CardLayout layout;
+
     public BasicApp() {
         super("Basic GUI Demo");
 
-        add(new PageA());
+        layout = new CardLayout();
+        setLayout(layout);
+        PageA pageA = new PageA(this);
+        PageB pageB = new PageB(this);
+        add(pageA, "PageA");
+        add(pageB, "PageB");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+    }
+
+    public void switchToPageA() {
+        layout.show(this.getContentPane(), "PageA");
+    }
+
+    public void switchToPageB() {
+        layout.show(this.getContentPane(), "PageB");
     }
 
     public static void main(String[] args) {
